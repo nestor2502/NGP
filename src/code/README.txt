@@ -1,0 +1,1 @@
+En esta carpeta se almacenan las clases principales, sin interfaz grafica
