@@ -1,6 +1,6 @@
-package com.example.demo.view
+package NGP.view
 
-import com.example.demo.app.Styles
+import NGP.code.Styles
 import tornadofx.*
 
 class MainView : View("Hello TornadoFX") {
