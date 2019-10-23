@@ -1,4 +1,4 @@
-package NGP.code
+package code
 
 import javafx.scene.text.FontWeight
 import tornadofx.Stylesheet

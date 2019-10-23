@@ -1,6 +1,6 @@
-package NGP.code
+package code
 import java.util.Random
-
+import code.Team
 class Torneo {
 
     private val equipo1 = Team("E1", generaHabilidad())

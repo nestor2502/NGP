@@ -1,6 +1,8 @@
-package NGP.code
+package code
 
 import java.util.Random
+import code.Apuesta
+import code.Team
 
 class Combate constructor(equipo1: Team, equipo2: Team){
     private var equipo1 : Team

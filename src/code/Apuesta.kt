@@ -1,4 +1,4 @@
-package NGP.code
+package code
 
 /**
  *Clase que calcula la apuesta por cada usuario y

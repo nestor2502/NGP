@@ -1,6 +1,6 @@
-package NGP.code
+package code
 
-import NGP.view.MainView
+import view.MainView
 import tornadofx.App
 
 class MyApp: App(MainView::class, Styles::class)

@@ -1,5 +1,6 @@
-package NGP.code
+package code
 
+import code.Team
 /**
  * Clase que revuelve un arreglo de equipos aleatoriamente
  */
