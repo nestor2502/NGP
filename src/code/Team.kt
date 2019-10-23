@@ -1,4 +1,4 @@
-package NGP.code
+package code
 
 /**
  * Equipos que participan en el torneo

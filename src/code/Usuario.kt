@@ -1,4 +1,4 @@
-package NGP.code
+package code
 
 class Usuario(private var nombre: String,
               private var usuario: String,

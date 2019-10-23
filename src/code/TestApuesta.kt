@@ -1,4 +1,6 @@
-package NGP.code
+package code
+
+import code.Team
 
 fun main(args: Array<String>){
     val apuesta = Apuesta(140, 60)
