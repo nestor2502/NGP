@@ -1,11 +1,20 @@
 package code
 
+import javafx.beans.property.SimpleIntegerProperty
+import javafx.beans.property.SimpleStringProperty
+import tornadofx.*
+
 /**
- * Equipos que participan en el torneo
+ * Equipo que participan en el torneo
  */
 class Team constructor(nombre: String, habilidad: Int){
-    private var nombre: String = ""
-    private var habilidad: Int = 0
+    val nombreProperty = SimpleStringProperty(nombre)
+    private var nombre by nombreProperty
+
+
+    var habilidadProperty = SimpleIntegerProperty(habilidad)
+    private var habilidad by habilidadProperty
+
     init {
         this.nombre = nombre
         this.habilidad = habilidad
@@ -15,7 +24,7 @@ class Team constructor(nombre: String, habilidad: Int){
      *Modifica el nombre del equipo
      * @param nombre que sele dará al equipo
      */
-    fun setNombre(nombre: String){
+    fun modificaNombre(nombre: String){
         if(nombre.isBlank())
             throw IllegalArgumentException("Argumento invalido")
         else
@@ -26,7 +35,7 @@ class Team constructor(nombre: String, habilidad: Int){
      * Se obtiene el nombre del equipo
      * @return nombre
      */
-    fun getNombre(): String{
+    fun obtenerNombre(): String{
         return nombre
     }
 
@@ -34,18 +43,23 @@ class Team constructor(nombre: String, habilidad: Int){
      * Se le añade una habilidad
      * @param habilidad
      */
-    fun setHabilidad(habilidad: Int){
+    fun modificaHabilidad(habilidad: Int){
         this.habilidad = habilidad
     }
 
     /**
      * Se obtiene la habilidad
      */
-    fun getHabilidad(): Int {
+    fun obtenerHabilidad(): Int {
         return habilidad
     }
 
 
 
+
+}
+class TeamModel(team: Team): ItemViewModel<Team>(team) {
+    val nombre = bind(Team::nombreProperty)
+    val habilidad = bind(Team::habilidadProperty)
 
 }

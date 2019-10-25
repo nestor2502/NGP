@@ -18,7 +18,7 @@ class Combate constructor(equipo1: Team, equipo2: Team){
     init {
         this.equipo1 = equipo1
         this.equipo2 = equipo2
-        apuesta = Apuesta(equipo1.getHabilidad(), equipo2.getHabilidad())
+        apuesta = Apuesta(equipo1.obtenerHabilidad(), equipo2.obtenerHabilidad())
         probailidad_equipo1 = apuesta.calculaProbabilidad(1)
         probailidad_equipo2 = apuesta.calculaProbabilidad(2)
     }
@@ -41,10 +41,10 @@ class Combate constructor(equipo1: Team, equipo2: Team){
             probabilidad_base = probailidad_equipo1
         else
             probabilidad_base = probailidad_equipo2
-         if (aleatorio <= probabilidad_base*100)
-             return selected
+        if (aleatorio <= probabilidad_base*100)
+            return selected
         else
-             return not_selected
+            return not_selected
     }
 
     /**
@@ -62,18 +62,10 @@ class Combate constructor(equipo1: Team, equipo2: Team){
             return  2
         else
             aleatorio = random.nextInt(2- 1);
-            if (aleatorio==1)
-                return 1
-            else
-                return 2
+        if (aleatorio==1)
+            return 1
+        else
+            return 2
     }
 
-}
-fun main(args: Array<String>){
-    val equipo1 = Team("E1", 140)
-    val equipo2 = Team("E2", 60)
-    var combate = Combate(equipo1, equipo2)
-    print("comienza")
-    var ganador = combate.determinaGanador()
-    print("\ntermina, ganador: $ganador")
 }
