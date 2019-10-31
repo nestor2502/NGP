@@ -19,14 +19,14 @@ class UsuarioTest() {
     @Test
     fun getNombre(){
         var user = Usuario("Angel","CNN","pemail@example.com","1234567P")
-        assert(user.obtenNombre() == "Angel")
+        assert(user.getNombre() == "Angel")
     }
 
     @Test
     fun setNombre(){
         var user = Usuario("Angel","CNN","pemail@example.com ","1234567P")
-        user.cambiaNombre("otro")
-        assert(user.obtenNombre() == "otro" )
+        user.setNombre("otro")
+        assert(user.getNombre() == "otro" )
     }
 
     @Test
