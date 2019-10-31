@@ -21,15 +21,10 @@ class Torneo constructor(saldo_inicial: Int){
     private val equipos : Array<Team>
     private var equipos_listos : MutableList<Team>
     private var saldo_inicial : Int
-    var saldo_generadoProperty = SimpleIntegerProperty(0)
-    private var saldo_generado by saldo_generadoProperty
-    var ganadorCuartosProperty = SimpleStringProperty("")
-    private var ganadorCuartos by ganadorCuartosProperty
-    var ganadorSemiProperty = SimpleStringProperty("")
-    private var ganadorSemi by ganadorSemiProperty
-    var ganadorFinalProperty = SimpleStringProperty("")
-    private var ganadorFinal by ganadorFinalProperty
-
+    private var saldo_generado : Int
+    private var ganadorCuartos:String
+    private var ganadorSemi:  String
+    private var ganadorFinal: String
     init {
 
         equipo1 = Team("Team Liquid", generaHabilidad())
@@ -217,7 +212,7 @@ class Torneo constructor(saldo_inicial: Int){
 
     /**
      * Metodo auxiliar para ver a los equipos
-     * que continuan en el torneo
+     * que continuan en el torneo por terminal
      */
     fun mostrar(){
         for (item in equipos_listos){
@@ -287,8 +282,9 @@ class Torneo constructor(saldo_inicial: Int){
      * @return nombre_de_equipos: nombre de todos los equipos ganadores por fase
      */
     fun obtenerGanadores(): MutableList<String>{
-        val nombre_de_equipos = FXCollections.observableArrayList<String>()
+        //val nombre_de_equipos = FXCollections.observableArrayList<String>()
         //var nombre_de_equipos by nombre_de_equiposProperty
+        var nombre_de_equipos = arrayListOf<String>()
         var i= 0
         for (equipo in equipos_listos){
             nombre_de_equipos.add(equipos_listos[i].obtenerNombre())
@@ -299,18 +295,4 @@ class Torneo constructor(saldo_inicial: Int){
 
 }
 
-/**
- * TorneoViewModel
- * Intermediario entre TornadoFX y la clase principal
- * Mas informacion:
- * @see https://github.com/edvin/tornadofx-guide/blob/master/part1/11.%20Editing%20Models%20and%20Validation.md
- */
-class TorneoModel(torneo: Torneo): ItemViewModel<Torneo>(torneo) {
-
-    val saldo_generado = bind(Torneo::saldo_generadoProperty)
-    var ganadorCuartos = bind(Torneo::ganadorCuartosProperty)
-    var ganadorSemi = bind(Torneo::ganadorSemiProperty)
-    var ganadorFinal = bind(Torneo::ganadorFinalProperty)
-
-}
 
