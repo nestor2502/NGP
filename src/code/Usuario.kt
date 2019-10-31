@@ -1,40 +1,17 @@
 package code
 
-import javafx.beans.property.SimpleIntegerProperty
-import javafx.beans.property.SimpleStringProperty
-import tornadofx.*
-
 /**
  * Clase para representar usuarios.
  * Un usuario debe tener nombre, usuario, correo, password,
  * correo,password.
- * Utiliza {@link JavaFX} para su enlace con la interfaz grafica
- * junto con tornadoFX para su uso en Kotlin
  */
 
-class Usuario(nombre: String,
-              usuario: String,
-              correo: String,
-              password: String) {
-    /*Nombre del usuario*/
-    val nombreProperty = SimpleStringProperty(nombre)
-    private var nombre by nombreProperty
-    /* Usuario */
-    val usuarioProperty = SimpleStringProperty(usuario)
-    private var usuario by usuarioProperty
-    /* Correo del Usuario*/
-    val correoProperty = SimpleStringProperty(correo)
-    private var correo by correoProperty
-    /* Contraseña cifrada del usuario */
-    val passwordProperty = SimpleStringProperty(password)
-    private var password by passwordProperty
-    /* Saldo del usuario*/
-    val saldoProperty = SimpleIntegerProperty(0)
-    private var saldo by saldoProperty
-    /* Historial del Usuario*/
-    val historialProperty = SimpleStringProperty("")
-    private var historial by historialProperty
-
+class Usuario(private var nombre: String,
+              private var usuario: String,
+              private var correo: String,
+              private var password: String) {
+    private var saldo = 0
+    private var historial = ""
     /**
      * Inicializador de la clase Usuario
      * Llama a la funcion comprueba
@@ -44,21 +21,21 @@ class Usuario(nombre: String,
     }
 
     /**
-     * Funcion obtenUsuario, no se usó a convencion getUsuario
+     * Funcion getUsuario, no se usó a convencion getUsuario
      * debido a un error de colisiones con el framewoork de
      * {@link TornadoFX}
      * @return usuario: El usuario
      */
-    fun obtenUsuario(): String = usuario
+    fun getUsuario(): String = usuario
 
     /**
-     * Funcion cambiaUsuario, no se usó a convencion getUsuario
+     * Funcion setUsuario, no se usó a convencion getUsuario
      * debido a un error de colisiones con el framewoork de
      * {@link TornadoFX}
      * Llama a la funcion comprueba
      * @param usuario: El nuevo usuario a guardar
      */
-    fun cambiaUsuario(usuario: String){
+    fun setUsuario(usuario: String){
         val temporal = this.usuario
         try {
             this.usuario = usuario
@@ -69,20 +46,20 @@ class Usuario(nombre: String,
         }
     }
     /**
-     * Funcion obtenNombre, no se usó a convencion getUsuario
+     * Funcion getNombre, no se usó a convencion getUsuario
      * debido a un error de colisiones con el framewoork de
      * {@link TornadoFX}
      * @return nombre: El nombre del usuario
      */
-    fun obtenNombre(): String = nombre
+    fun getNombre(): String = nombre
     /**
-     * Funcion cambiaNombre, no se usó a convencion getUsuario
+     * Funcion setNombre, no se usó a convencion getUsuario
      * debido a un error de colisiones con el framewoork de
      * {@link TornadoFX}
      * Llama a la funcion comprueba
      * @param nombre: El nuevo nombre a guardar
      */
-    fun cambiaNombre(nombre: String){
+    fun setNombre(nombre: String){
         val temporal = this.nombre
         try {
             this.nombre = nombre
@@ -93,20 +70,20 @@ class Usuario(nombre: String,
         }
     }
     /**
-     * Funcion obtenCorreo, no se usó a convencion getUsuario
+     * Funcion getCorreo, no se usó a convencion getUsuario
      * debido a un error de colisiones con el framewoork de
      * {@link TornadoFX}
      * @return correo: El correo del usuario
      */
-    fun obtenCorreo():String = correo
+    fun getCorreo():String = correo
     /**
-     * Funcion cambiaCorreo, no se usó a convencion getUsuario
+     * Funcion setCorreo, no se usó a convencion getUsuario
      * debido a un error de colisiones con el framewoork de
      * {@link TornadoFX}
      * Llama a la funcion comprueba
      * @param correo: El nuevo correo a guardar
      */
-    fun cambiaCorreo(correo: String){
+    fun setCorreo(correo: String){
         val temporal = this.correo
         try {
             this.correo = correo
@@ -117,53 +94,57 @@ class Usuario(nombre: String,
         }
     }
     /**
-     * Funcion obtenPassword, no se usó a convencion getUsuario
+     * Funcion getPassword, no se usó a convencion getUsuario
      * debido a un error de colisiones con el framewoork de
      * {@link TornadoFX}
      * @return password: El password del usuario
      */
-    fun obtenPassword():String = password
+    fun getPassword():String = password
     /**
-     * Funcion cambiaPassword, no se usó a convencion getUsuario
+     * Funcion setPassword, no se usó a convencion getUsuario
      * debido a un error de colisiones con el framewoork de
      * {@link TornadoFX}
      * @param password: El nuevo password a guardar
      */
-    fun cambiaPassword(password: String){
+    fun setPassword(password: String){
         this.password = password
 
     }
     /**
-     * Funcion obtenSaldo, no se usó a convencion getUsuario
+     * Funcion getSaldo, no se usó a convencion getUsuario
      * debido a un error de colisiones con el framewoork de
      * {@link TornadoFX}
      * @return saldo El saldo
      */
-    fun obtenSaldo(): Int = saldo
+    fun getSaldo(): Int = saldo
     /**
-     * Funcion cambiaSaldo, no se usó a convencion getUsuario
+     * Funcion setSaldo, no se usó a convencion getUsuario
      * debido a un error de colisiones con el framewoork de
      * {@link TornadoFX}
      * @param saldo: Suma el saldo
      * */
-    fun cambiaSaldo(saldo: Int){
-        this.saldo += saldo
+    fun setSaldo(saldo: Int){
+        val nuevo = this.saldo + saldo
+        if(nuevo < 0)
+            throw IllegalArgumentException("El saldo no puede ser negativo")
+        this.saldo = nuevo
     }
     /**
-     * Funcion obtenHistorial, no se usó a convencion getUsuario
+     * Funcion getHistorial, no se usó a convencion getUsuario
      * debido a un error de colisiones con el framewoork de
      * {@link TornadoFX}
      * @return historial: El historial del usuario
      */
-    fun obtenHistorial():String = historial
+    fun getHistorial():String = historial
     /**
-     * Funcion cambiaHistorial, no se usó a convencion getUsuario
+     * Funcion setHistorial, no se usó a convencion getUsuario
      * debido a un error de colisiones con el framewoork de
      * {@link TornadoFX}
      * @param historial: El historial anterior se concatena al nuevo
      */
-    fun cambiaHistorial(historial: String){
-        this.historial += historial
+    fun setHistorial(historial: String){
+        val nuevo = this.historial + historial
+        this.historial = nuevo
     }
     /**
      *  Funcion comprueba
@@ -186,19 +167,4 @@ class Usuario(nombre: String,
         if(!stringPattern.containsMatchIn(usuario))
             throw IllegalArgumentException("Usuario inválido")
     }
-}
-
-/**
- * UsuarioViewModel
- * Intermediario entre TornadoFX y la clase principal
- * Mas informacion:
- * @see https://github.com/edvin/tornadofx-guide/blob/master/part1/11.%20Editing%20Models%20and%20Validation.md
- */
-class UsuarioModel(usuario: Usuario): ItemViewModel<Usuario>(usuario) {
-    val nombre = bind(Usuario::nombreProperty)
-    val usuario = bind(Usuario::usuarioProperty)
-    val correo = bind(Usuario::correoProperty)
-    val password = bind(Usuario::passwordProperty)
-    val saldo = bind(Usuario::saldoProperty)
-    val historial = bind(Usuario::historialProperty)
 }
