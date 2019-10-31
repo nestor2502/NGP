@@ -7,12 +7,18 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.Test
 import code.BaseDeDatos
 import code.Usuario
+import org.junit.Assert
+import java.lang.IllegalArgumentException
 
 class TestBaseDeDatos {
 
     @Test
-    fun testAgregaUsuario(){
+    fun testAgregaUsuarioRepetido(){
         val bdd = BaseDeDatos("./src/resources/database/test")
-        bdd.agregaUsuario(Usuario("Angel","ACPN","@.","jkfsa"))
+        try {
+            bdd.agregaUsuario(Usuario("Angel", "ACPN", "@.", "jkfsa"))
+            assert(1 == 0)
+        }catch(e : IllegalArgumentException){
+        }
     }
 }

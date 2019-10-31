@@ -28,6 +28,7 @@ class RegisterController : Controller() {
 
             if(succesfulRegister){
                 showStartingScreen("Registro Exitoso")
+                registerScreen.clear()
             }else{
                 showRegisterScreen("Intentelo de nuevo")
             }
