@@ -8,12 +8,9 @@ import tornadofx.*
  * Equipo que participan en el torneo
  */
 class Team constructor(nombre: String, habilidad: Int){
-    val nombreProperty = SimpleStringProperty(nombre)
-    private var nombre by nombreProperty
 
-
-    var habilidadProperty = SimpleIntegerProperty(habilidad)
-    private var habilidad by habilidadProperty
+    private var nombre: String
+    private var habilidad : Int
 
     init {
         this.nombre = nombre
@@ -53,13 +50,4 @@ class Team constructor(nombre: String, habilidad: Int){
     fun obtenerHabilidad(): Int {
         return habilidad
     }
-
-
-
-
-}
-class TeamModel(team: Team): ItemViewModel<Team>(team) {
-    val nombre = bind(Team::nombreProperty)
-    val habilidad = bind(Team::habilidadProperty)
-
 }
