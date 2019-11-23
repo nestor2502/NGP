@@ -34,7 +34,7 @@ class Apuesta constructor(habilidad_equipoA: Int, habilidad_equipoB: Int){
 
     /**
      * Calcula la cuota por apostar por el usuario
-     * @param key 1 apuesta por equipoA, 2 apuesta por equipo B
+     * @param key 1: si se apuesta por equipoA, 2 si se apuesta por equipo B
      * @return cuota
      */
     fun calcularCuota(key: Int):Double{
