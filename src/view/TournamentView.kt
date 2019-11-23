@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleBooleanProperty
 import javafx.beans.property.SimpleStringProperty
 import javafx.event.EventHandler
 import javafx.util.Duration
-import no.tornado.fxsample.login.Styles.Companion.loginScreen
+import view.Styles.Companion.loginStyle
 import tornadofx.*
 import code.Torneo
 
@@ -20,7 +20,7 @@ class TournamentView : View("Tournament") {
     }
 
     override val root = form {
-        addClass(TournamentView)
+        addClass(loginStyle)
 
         button("Login") {
             isDefaultButton = true

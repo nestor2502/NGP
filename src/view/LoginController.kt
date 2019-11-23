@@ -1,5 +1,6 @@
 package view
 
+import NGP.view.MainView
 import code.Usuario
 import code.BaseDeDatos
 import tornadofx.*
@@ -7,6 +8,7 @@ import tornadofx.*
 class LoginController : Controller() {
     val loginScreen : LoginScreen by inject()
     val startingScreen : StartingScreen by inject()
+    val mainView : MainView by inject()
 
     fun init(){
         with(config){
@@ -19,7 +21,9 @@ class LoginController : Controller() {
     fun showLoginScreen(message: String){
         startingScreen.replaceWith(loginScreen,sizeToScene = true, centerOnScreen = true)
     }
-
+    fun showMainView(){
+        loginScreen.replaceWith(mainView,sizeToScene = true, centerOnScreen = true)
+    }
     fun showStartingScreen(){
         loginScreen.replaceWith(startingScreen, sizeToScene = true, centerOnScreen = true)
     }
@@ -39,7 +43,7 @@ class LoginController : Controller() {
                         save()
                     }
                 }
-                showStartingScreen()
+                showMainView()
             } else {
                 showLoginScreen("Login failed")
             }
