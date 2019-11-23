@@ -4,6 +4,8 @@ import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.dao.*
 import code.Usuario
+import org.jetbrains.exposed.exceptions.ExposedSQLException
+import java.net.PasswordAuthentication
 
 class BaseDeDatos(private var directorio: String){
     init {
@@ -27,15 +29,22 @@ class BaseDeDatos(private var directorio: String){
         var saldo by Users.saldo
     }
     fun agregaUsuario(us : Usuario){
-        transaction     {
-            SchemaUtils.create(Users)
-            User.new {
-                usuario = us.getUsuario()
-                password = us.getPassword()
-                nombre = us.getNombre()
-                historial = us.getHistorial()
-                saldo = us.getSaldo()
+        try {
+            transaction     {
+                SchemaUtils.create(Users)
+                    User.new {
+                        usuario = us.getUsuario()
+                        password = us.getPassword()
+                        nombre = us.getNombre()
+                        historial = us.getHistorial()
+                        saldo = us.getSaldo()
+                    }
             }
+        }catch (e: ExposedSQLException){
+            throw IllegalArgumentException("Usuario Repetido")
         }
+    }
+    fun encuentraUsuario(us: String,password: String): Boolean{
+        return true
     }
 }

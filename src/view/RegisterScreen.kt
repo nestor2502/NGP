@@ -39,6 +39,7 @@ class RegisterScreen : View("Registrate!"){
         }
         button("Registrate") {
             isDefaultButton = true
+            useMaxWidth = true
             action {
                 model.commit {
                     registerController.tryRegister(
@@ -53,6 +54,7 @@ class RegisterScreen : View("Registrate!"){
         button("Cancelar"){
             action{
                 registerController.showStartingScreen("Bienvenido")
+                useMaxWidth = true
             }
         }
     }

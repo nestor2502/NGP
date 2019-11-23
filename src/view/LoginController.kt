@@ -1,5 +1,7 @@
 package view
 
+import code.Usuario
+import code.BaseDeDatos
 import tornadofx.*
 
 class LoginController : Controller() {
@@ -24,7 +26,7 @@ class LoginController : Controller() {
 
     fun tryLogin(username: String, password: String, remember: Boolean){
         runAsync {
-            compruebaDatos()
+            compruebaDatos(username,password)
         } ui { succesfulLogin ->
 
             if(succesfulLogin) {
@@ -52,7 +54,10 @@ class LoginController : Controller() {
         }
         showLoginScreen("Log in as another user")
     }
-    fun compruebaDatos(): Boolean = true
+    fun compruebaDatos(usuario: String,password: String): Boolean{
+        val bdd = BaseDeDatos("./src/resources/database/usuarios")
+        return bdd.encuentraUsuario(usuario,password)
+    }
 
     companion object{
         val USERNAME = "username"

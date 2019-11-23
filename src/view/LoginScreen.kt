@@ -37,6 +37,7 @@ class LoginScreen : View("Inicia Sesión"){
         }
         button("Login") {
             isDefaultButton = true
+            useMaxWidth = true
             action {
                 model.commit {
                     loginController.tryLogin(
@@ -50,6 +51,7 @@ class LoginScreen : View("Inicia Sesión"){
         button("Cancel"){
             action{
                 loginController.showStartingScreen()
+                useMaxWidth = true
             }
         }
     }
